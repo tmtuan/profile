@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  has_attached_file :image, styles: { large: "600X600>", medium: "300x300>", thumb: "150x150#" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   def self.authenticate(email, password)
     user = find_by_email(email)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)

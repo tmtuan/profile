@@ -3,7 +3,7 @@
     <div class="col-md-4">
         <h1>Sign Up</h1>
 
-        <%= form_for @user, :html => { :class => 'form-signin'} do |f| %>
+        <%= form_for @user, :html => { multipart: true, :class => 'form-signin'} do |f| %>
             <% if @user.errors.any? %>
                 <div class="error_messages">
                   <h2>Form is invalid</h2>
@@ -26,6 +26,13 @@
               <%= f.label :password_confirmation, class: 'sr-only' %><br />
               <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Retype Password" %>
             </p>
+
+          <p>
+            <%= f.label :image, class: 'sr-only' %><br />
+            <%= f.file_field :image, class: 'form-control' %>
+          </p>
+
+
             <div><%= f.submit class: 'btn btn-primary', value: 'Sign Up' %></div>
         <% end %>
     </div>

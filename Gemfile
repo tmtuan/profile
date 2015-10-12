@@ -50,3 +50,4 @@ end
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
+gem 'paperclip', '~> 4.3.1'
