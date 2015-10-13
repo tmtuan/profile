@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012153028) do
+ActiveRecord::Schema.define(version: 20151013123747) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20151012153028) do
     t.datetime "image_updated_at"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "birthday"
+    t.date     "birthday"
   end
 
 end

@@ -22,7 +22,7 @@
         <p>
           <%= f.label :birthday %><br />
           <div class="input-group date">
-            <input type="text" class="form-control", id="birthday", placeholder="dd/mm/yyyy"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+            <input type="text" class="form-control" id="birthday" placeholder="dd/mm/yyyy" name="user[birthday]" value="<%= @user.birthday %>" data-date-format="mm/dd/yyyy"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
           </div>
         </p>
 
