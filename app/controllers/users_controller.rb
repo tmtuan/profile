@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(params[:user].permit(:first_name, :last_name, :image))
+    if @user.update(params[:user].permit(:first_name, :last_name, :image, :birthday))
       redirect_to user_profile_path(:id => @user.id), :notice => "Your profile has been successfully updated!"
     else
       render 'edit'
@@ -34,6 +34,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :image)
+    params.require(:user).permit(:email, :password, :password_confirmation, :image, :birthday)
   end
 end

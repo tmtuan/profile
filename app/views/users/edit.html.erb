@@ -3,21 +3,27 @@
   <div class="col-md-4">
     <h1>Edit Profile</h1>
     <h2> <%= @user.email %></h2>
-    <p><%= image_tag @user.image.url %></p>
+    <p><%= image_tag @user.image.url(:medium) %></p>
 
 
     <%= form_for @user, :html => { multipart: true, :class => 'form-signin'},  method: :patch do |f| %>
         <p>
-          <%= f.label :image, class: 'sr-only' %><br />
+          <%= f.label :image %><br />
           <%= f.file_field :image, class: 'form-control' %>
         </p>
         <p>
-          <%= f.label :first_name , class: 'sr-only' %><br />
+          <%= f.label :first_name  %><br />
           <%= f.text_field :first_name, class: 'form-control', placeholder: "First name" %>
         </p>
         <p>
-          <%= f.label :last_name, class: 'sr-only' %><br />
+          <%= f.label :last_name %><br />
           <%= f.text_field :last_name, class: 'form-control', placeholder: "Last name" %>
+        </p>
+        <p>
+          <%= f.label :birthday %><br />
+          <div class="input-group date">
+            <input type="text" class="form-control", id="birthday", placeholder="dd/mm/yyyy"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+          </div>
         </p>
 
         <div><%= f.submit class: 'btn btn-primary', value: 'Update' %></div>
