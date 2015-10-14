@@ -40,11 +40,11 @@
     <div class="container">
           <% flash.each do |name, msg| %>
             <% if flash[:notice] %>
-              <div class="alert alert-success">
+              <div id="notice_wrapper" class="alert alert-success">
                 <%= content_tag :div, msg, :id => "flash_#{name}" %>
               </div>
             <% else %>
-              <div class="alert alert-danger">
+              <div id="notice_wrapper" class="alert alert-danger">
                 <%= content_tag :div, msg, :id => "flash_#{name}" %>
               </div>
             <% end %>
@@ -54,6 +54,16 @@
         <%= yield %>
     </div>
 
+
+    <script>
+      $(document).ready(function(){
+         setTimeout(function(){
+            $('#notice_wrapper').fadeOut("slow", function(){
+                $(this).remove();
+            })
+         }, 4500);
+      });
+    </script>
 
 </body>
 </html>
