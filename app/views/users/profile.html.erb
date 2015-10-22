@@ -1,7 +1,15 @@
-<h1>User Profile Page</h1>
-<p><%= image_tag @user.image.url(:medium) %></p>
-<p>Welcome, <%= @user.email %></p>
-<h2>Bio</h2>
-<p>First Name: <%= @user.first_name %></p>
-<p>Last Name: <%= @user.last_name %></p>
-<p><%= link_to 'Edit Profile', edit_user_path(@user) %></p>
+<div class="col-md-8 col-md-offset-2">
+    <h1>User Profile Page</h1>
+    <blockquote>
+        <p><%= javascript_include_tag 'http://www.brainyquote.com/link/quotebr.js' %></p>
+    </blockquote>
+    <div class="row">
+    <div class="col-md-6 col-md-offset-4"><%= image_tag @user.image.url(:medium) %></div>
+    </div>
+      <div>
+        <h2>Bio</h2>
+        <p>First Name: <%= @user.first_name %></p>
+        <p>Last Name: <%= @user.last_name %></p>
+        <p><%= link_to 'Edit Profile', edit_user_path(@user) %></p>
+    </div>
+</div>
