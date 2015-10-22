@@ -3,13 +3,13 @@
   <div class="col-md-4">
     <h1>Edit Profile</h1>
     <h2> <%= @user.email %></h2>
-    <p><%= image_tag @user.image.url(:medium) %></p>
+    <p><%= image_tag @user.image.url(:thumb), id: 'current_avatar', width: "150px", height: "auto" %></p>
 
 
     <%= form_for @user, :html => { multipart: true, :class => 'form-signin'},  method: :patch do |f| %>
         <p>
           <%= f.label :image %><br />
-          <%= f.file_field :image, class: 'form-control' %>
+          <%= f.file_field :image, class: 'form-control', id: 'new_avatar' %>
         </p>
         <p>
           <%= f.label :first_name  %><br />
@@ -31,3 +31,25 @@
   </div>
   <div class="col-md-4"></div>
 </div>
+
+# preview image before uploading
+<script>
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+        f=files[0]
+        // Only process image files.
+        if (f.type.match('image.*')) {
+            var reader = new FileReader();
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    // alert(e.target.result);
+                    document.getElementById("current_avatar").src=e.target.result;
+                };
+            })(f);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+        }
+    }
+    document.getElementById('new_avatar').addEventListener('change', handleFileSelect, false);
+</script>
