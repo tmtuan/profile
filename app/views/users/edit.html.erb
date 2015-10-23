@@ -3,10 +3,13 @@
   <div class="col-md-4">
     <h1>Edit Profile</h1>
     <h2> <%= @user.email %></h2>
-    <p><%= image_tag @user.image.url(:thumb), id: 'current_avatar', width: "150px", height: "auto" %></p>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-4"><%= image_tag @user.image.url(:thumb), id: 'current_avatar', width: "150px", height: "auto" %></div>
+    </div>
 
 
     <%= form_for @user, :html => { multipart: true, :class => 'form-signin'},  method: :patch do |f| %>
+
         <p>
           <%= f.label :image %><br />
           <%= f.file_field :image, class: 'form-control', id: 'new_avatar' %>
