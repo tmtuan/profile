@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
+    render layout: "layout_profile"
   end
 
   def edit
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
   end
 
   def create
